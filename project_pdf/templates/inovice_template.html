@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .invoice-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 80%;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 150px;
+            height: auto;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <div class="header">
+            {% if customer.logo %}
+                <img src="{{ customer.logo.url }}" alt="Customer Logo">
+            {% endif %}
+            <h2>Invoice for {{ customer.name }}</h2>
+        </div>
+        <div class="details">
+            <p><strong>Name:</strong> {{ customer.name }}</p>
+            <p><strong>Description:</strong> {{ customer.description }}</p>
+            <p><strong>Created:</strong> {{ customer.created|date:"F d, Y" }}</p>
+            <p><strong>Updated:</strong> {{ customer.updated|date:"F d, Y" }}</p>
+        </div>
+    </div>
+</body>
+</html>
